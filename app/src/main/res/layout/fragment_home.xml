@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.home.HomeFragment">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/excercise_project"
+        android:textSize="24sp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/roboto_bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:padding="16dp"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="8dp"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:padding="8dp"
+            android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/iv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/input_nama"
+                    android:src="@drawable/ic_username"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_name"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_desc"
+                    android:layout_marginEnd="16dp"/>
+            
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/input_nama"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toEndOf="@+id/iv_name"
+                app:layout_constraintBottom_toTopOf="@+id/tv_desc"
+                android:layout_marginEnd="16dp"/>
+
+            <TextView
+                android:id="@+id/tv_desc"
+                android:layout_width="0dp"
+                android:textSize="12sp"
+                android:layout_marginStart="10dp"
+                android:layout_height="wrap_content"
+                android:text="@string/input_name_desc"
+                app:layout_constraintStart_toEndOf="@id/iv_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_calculator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:padding="16dp"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="8dp"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_name">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:padding="8dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/iv_name2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/calculator"
+                android:src="@drawable/ic_calculator"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_name2"
+                app:layout_constraintBottom_toBottomOf="@id/tv_desc2"
+                android:layout_marginEnd="16dp"/>
+
+            <TextView
+                android:id="@+id/tv_name2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/calculator"
+                android:textSize="18sp"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toEndOf="@+id/iv_name2"
+                app:layout_constraintBottom_toTopOf="@+id/tv_desc2"
+                android:layout_marginEnd="16dp"/>
+
+            <TextView
+                android:id="@+id/tv_desc2"
+                android:layout_width="0dp"
+                android:textSize="12sp"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/roboto_regular"
+                android:layout_height="wrap_content"
+                android:text="@string/input_calculator_desc"
+                android:lines="3"
+                app:layout_constraintStart_toEndOf="@id/iv_name2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name2"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

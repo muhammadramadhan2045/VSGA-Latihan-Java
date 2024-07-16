@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.calculator.CalculatorFragment">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        app:titleTextColor="?attr/colorOnPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:fontFamily="@font/roboto_bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/title"
+        android:layout_margin="10dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/my_toolbar" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/firstNumberEditTextLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/first_input_hint"
+        android:padding="8dp"
+        app:boxCornerRadiusBottomEnd="5dp"
+        app:boxCornerRadiusBottomStart="5dp"
+        app:boxCornerRadiusTopEnd="5dp"
+        app:boxCornerRadiusTopStart="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/firstNumberEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/roboto_regular"
+            android:inputType="number"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/secondNumberEditTextLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/second_input_hint"
+        android:padding="8dp"
+        app:boxCornerRadiusBottomEnd="5dp"
+        app:boxCornerRadiusBottomStart="5dp"
+        app:boxCornerRadiusTopEnd="5dp"
+        app:boxCornerRadiusTopStart="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firstNumberEditTextLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/secondNumberEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:ems="10"
+            android:fontFamily="@font/roboto_regular"
+            android:inputType="number"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_plus"
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:backgroundTint="?attr/colorPrimary"
+        android:text="@string/plus"
+        android:textColor="?attr/colorOnPrimary"
+        app:cornerRadius="8dp"
+        android:fontFamily="@font/roboto_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/bt_minus"
+        app:layout_constraintTop_toBottomOf="@+id/secondNumberEditTextLayout" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_minus"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:backgroundTint="?attr/colorPrimary"
+        android:text="@string/minus"
+        android:textColor="?attr/colorOnPrimary"
+        app:cornerRadius="8dp"
+        android:fontFamily="@font/roboto_regular"
+        app:layout_constraintStart_toEndOf="@id/bt_plus"
+        app:layout_constraintEnd_toStartOf="@id/bt_multiple"
+        app:layout_constraintTop_toBottomOf="@+id/secondNumberEditTextLayout" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_multiple"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginEnd="5dp"
+        android:backgroundTint="?attr/colorPrimary"
+        android:text="@string/multiple"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="?attr/colorOnPrimary"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toStartOf="@id/bt_divide"
+        app:layout_constraintStart_toEndOf="@id/bt_minus"
+        app:layout_constraintTop_toBottomOf="@+id/secondNumberEditTextLayout" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_divide"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:backgroundTint="?attr/colorPrimary"
+        android:text="@string/divide"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="?attr/colorOnPrimary"
+        app:cornerRadius="8dp"
+        app:layout_constraintStart_toEndOf="@id/bt_multiple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/secondNumberEditTextLayout" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_clear"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="?attr/colorPrimary"
+        android:text="@string/clear"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="?attr/colorOnPrimary"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="@id/bt_divide"
+        app:layout_constraintStart_toStartOf="@id/bt_plus"
+        app:layout_constraintTop_toBottomOf="@+id/bt_plus" />
+
+
+    <TextView
+        android:id="@+id/result_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="@string/result"
+        android:textSize="24sp"
+        android:fontFamily="@font/roboto_bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_clear" />
+
+    <TextView
+        android:id="@+id/result_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="@string/result_value"
+        android:textSize="24sp"
+        android:fontFamily="@font/roboto_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/result_label" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

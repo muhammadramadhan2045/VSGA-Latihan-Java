@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Latihan JMP</string>
+    <string name="title">Masukkan Dua Angka</string>
+    <string name="first_input_hint">Masukkan angka pertama</string>
+    <string name="second_input_hint">Masukkan angka kedua</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="multiple">X</string>
+    <string name="divide">/</string>
+    <string name="clear">Bersihkan</string>
+    <string name="result">Hasil</string>
+    <string name="result_value">-----</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name_input_hint">Masukan Nama Anda</string>
+    <string name="show">Tampilkan</string>
+    <string name="to_input_name_page">Halaman nama</string>
+    <string name="name_validation">Please enter your name</string>
+    <string name="input_nama">Input Nama</string>
+    <string name="calculator">Kalkulator</string>
+    <string name="excercise_project">Projek Latihan</string>
+    <string name="input_name_desc">Form menampilkan nama</string>
+    <string name="input_calculator_desc">Kalkulator sederhana untuk menghitung</string>
+</resources>

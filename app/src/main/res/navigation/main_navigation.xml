@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/calculatorFragment"
+        android:name="com.example.mypens.view.calculator.CalculatorFragment"
+        android:label="fragment_calculator"
+        tools:layout="@layout/fragment_calculator" >
+        <action
+            android:id="@+id/action_calculatorFragment_to_inputNamaFragment"
+            app:destination="@id/inputNamaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inputNamaFragment"
+        android:name="com.example.mypens.view.inputnama.InputNamaFragment"
+        android:label="fragment_input_nama"
+        tools:layout="@layout/fragment_input_nama" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.mypens.view.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_calculatorFragment"
+            app:destination="@id/calculatorFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_inputNamaFragment"
+            app:destination="@id/inputNamaFragment" />
+    </fragment>
+
+</navigation>
