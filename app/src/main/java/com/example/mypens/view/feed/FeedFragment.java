@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -56,6 +58,8 @@ public class FeedFragment extends Fragment {
             try {
                 dbHelper = new FeedReaderDbHelper(getContext());
                 dbHelper.insertData(title, subtitle);
+                NavController navController = Navigation.findNavController(view);
+                navController.navigateUp();
             } catch (Exception e) {
                 Log.d("TAG", "Error: " + e.getMessage());
             }
