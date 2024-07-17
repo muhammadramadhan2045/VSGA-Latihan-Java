@@ -30,4 +30,6 @@
     <string name="title_label">Title</string>
     <string name="subtitle_label">Subtitle</string>
     <string name="update">Ubah</string>
+    <string name="no_subtitle">No Subtitle</string>
+    <string name="no_title">No Title</string>
 </resources>

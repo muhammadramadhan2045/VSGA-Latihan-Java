@@ -79,7 +79,6 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_SUBTITLE, subtitle);
-        values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE, title);
         db.update(FeedReaderContract.FeedEntry.TABLE_NAME, values, FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE + " = ?", new String[]{title});
     }
 

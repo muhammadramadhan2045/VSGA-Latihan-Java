@@ -46,6 +46,22 @@
         <action
             android:id="@+id/action_listFeedFragment_to_feedFragment"
             app:destination="@id/feedFragment" />
+        <action
+            android:id="@+id/action_listFeedFragment_to_detailFeedFragment"
+            app:destination="@id/detailFeedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFeedFragment"
+        android:name="com.example.mypens.view.detailfeed.DetailFeedFragment"
+        android:label="fragment_detail_feed"
+        tools:layout="@layout/fragment_detail_feed" >
+        <argument
+            android:name="title"
+            app:argType="string"
+            android:defaultValue="title" />
+        <argument
+            android:name="subtitle"
+            app:argType="string" />
     </fragment>
 
 </navigation>

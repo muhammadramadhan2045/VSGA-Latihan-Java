@@ -9,7 +9,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +37,7 @@ public class ListFeedFragment extends Fragment {
     private FeedReaderDbHelper dbHelper;
     private FeedAdapter feedAdapter;
     private List<Feed> feedList;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +71,40 @@ public class ListFeedFragment extends Fragment {
         feedAdapter = new FeedAdapter(feedList);
         binding.rvFeed.setAdapter(feedAdapter);
 
+        feedAdapter.setOnItemClickCallback(feed -> {
+            Bundle bundle = new Bundle();
+            bundle.putString("title", feed.getTitle());
+            bundle.putString("subtitle", feed.getSubtitle());
+            NavController navController = NavHostFragment.findNavController(ListFeedFragment.this);
+            navController.navigate(R.id.action_listFeedFragment_to_detailFeedFragment, bundle);
+        });
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(
+                0,
+                ItemTouchHelper.RIGHT
+        ) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                int position = viewHolder.getAdapterPosition();
+                Feed feed = feedList.get(position);
+
+                //delete from database
+                try {
+                    dbHelper.deleteData(feed.getTitle());
+                    feedList.remove(position);
+                } catch (Exception e) {
+                    Toast.makeText(getContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        itemTouchHelper.attachToRecyclerView(binding.rvFeed);
+
 
     }
 
@@ -100,7 +137,6 @@ public class ListFeedFragment extends Fragment {
         }
         cursor.close();
     }
-
 
 
 }

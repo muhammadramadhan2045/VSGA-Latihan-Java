@@ -15,11 +15,15 @@ import java.util.List;
 
 public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder> {
 
-    private List<Feed> feedList;
+    private final List<Feed> feedList;
     public FeedAdapter(List<Feed> feedList) {
         this.feedList = feedList;
     }
+    private OnItemClickCallback onItemClickCallback;
 
+    public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback;
+    }
 
     @NonNull
     @Override
@@ -32,6 +36,9 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
     @Override
     public void onBindViewHolder(@NonNull FeedAdapter.FeedViewHolder holder, int position) {
         holder.bind(feedList.get(position));
+        holder.itemView.setOnClickListener(v -> {
+            onItemClickCallback.onItemClicked(feedList.get(position));
+        });
     }
 
     @Override
@@ -56,5 +63,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
         }
     }
 
-
+    public interface OnItemClickCallback {
+        void onItemClicked(Feed feed);
+    }
 }
