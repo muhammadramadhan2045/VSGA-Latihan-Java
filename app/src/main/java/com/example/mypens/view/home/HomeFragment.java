@@ -51,6 +51,11 @@ public class HomeFragment extends Fragment {
             NavController navController = NavHostFragment.findNavController(this);
             navController.navigate(R.id.action_homeFragment_to_inputNamaFragment);
         });
+
+        binding.cvFeed.setOnClickListener(v -> {
+            NavController navController = NavHostFragment.findNavController(this);
+            navController.navigate(R.id.action_homeFragment_to_listFeedFragment);
+        });
     }
 
 }

@@ -29,6 +29,23 @@
         <action
             android:id="@+id/action_homeFragment_to_inputNamaFragment"
             app:destination="@id/inputNamaFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_listFeedFragment"
+            app:destination="@id/listFeedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/feedFragment"
+        android:name="com.example.mypens.view.feed.FeedFragment"
+        android:label="fragment_feed"
+        tools:layout="@layout/fragment_feed" />
+    <fragment
+        android:id="@+id/listFeedFragment"
+        android:name="com.example.mypens.view.feedlist.ListFeedFragment"
+        android:label="fragment_list_feed"
+        tools:layout="@layout/fragment_list_feed" >
+        <action
+            android:id="@+id/action_listFeedFragment_to_feedFragment"
+            app:destination="@id/feedFragment" />
     </fragment>
 
 </navigation>

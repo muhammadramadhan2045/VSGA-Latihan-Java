@@ -21,4 +21,13 @@
     <string name="excercise_project">Projek Latihan</string>
     <string name="input_name_desc">Form menampilkan nama</string>
     <string name="input_calculator_desc">Kalkulator sederhana untuk menghitung</string>
+    <string name="add_feed">Tambah data feed</string>
+    <string name="feed">Feed</string>
+    <string name="feed_desc">Ada cuitan orang cuy</string>
+    <string name="title_input_hint">Masukan Title Anda</string>
+    <string name="save">Simpan</string>
+    <string name="name_subtitle_hint">Post tweet Anda</string>
+    <string name="title_label">Title</string>
+    <string name="subtitle_label">Subtitle</string>
+    <string name="update">Ubah</string>
 </resources>

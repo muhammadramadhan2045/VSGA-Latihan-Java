@@ -1,5 +1,7 @@
 package com.example.mypens.view.inputnama;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +15,8 @@ import android.view.ViewGroup;
 
 import com.example.mypens.R;
 import com.example.mypens.databinding.FragmentInputNamaBinding;
+import com.example.mypens.db.FeedReaderContract;
+import com.example.mypens.db.FeedReaderDbHelper;
 
 import java.util.Objects;
 
@@ -22,6 +26,7 @@ public class InputNamaFragment extends Fragment {
 
     //binding
     private FragmentInputNamaBinding binding;
+    FeedReaderDbHelper dbHelper = new FeedReaderDbHelper(getContext());
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,7 @@ public class InputNamaFragment extends Fragment {
 
     }
 
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -49,6 +55,7 @@ public class InputNamaFragment extends Fragment {
             }
             binding.tvResult.setVisibility(View.VISIBLE);
             binding.tvResult.setText(String.format("Halo, %s", name));
+
         });
     }
 }
