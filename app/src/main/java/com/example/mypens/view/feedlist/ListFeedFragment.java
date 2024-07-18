@@ -105,7 +105,7 @@ public class ListFeedFragment extends Fragment {
 
                 //delete from database
                 try {
-                    dbHelper.deleteData(feed.getName());
+                    dbHelper.deleteData(feed.getNrp());
                     feedList.remove(position);
                     feedAdapter.notifyItemRemoved(position);
                     feedAdapter.notifyItemRangeChanged(position, feedList.size());
