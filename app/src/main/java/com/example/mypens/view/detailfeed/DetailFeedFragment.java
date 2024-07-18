@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 
 import com.example.mypens.R;
 import com.example.mypens.databinding.FragmentDetailFeedBinding;
-import com.example.mypens.db.FeedReaderDbHelper;
+import com.example.mypens.db.feed.FeedReaderDbHelper;
 
 import java.util.Objects;
 
@@ -46,28 +46,51 @@ public class DetailFeedFragment extends Fragment {
         //get data from bundle
         Bundle bundle = getArguments();
         if (bundle != null) {
-            String title = bundle.getString("title");
-            String subtitle = bundle.getString("subtitle");
+            String nrp = bundle.getString("nrp");
+            String name = bundle.getString("name");
+            String birth = bundle.getString("birth");
+            String gender = bundle.getString("gender");
+            String address = bundle.getString("address");
 
-            binding.titleEditText.setText(title);
-            binding.subtitleEditText.setText(subtitle);
+
+            binding.nrpEditText.setText(nrp);
+            binding.nameEditText.setText(name);
+            binding.birthEditText.setText(birth);
+            binding.genderEditText.setText(gender);
+            binding.addressEditText.setText(address);
+
         }else{
-            binding.titleEditText.setText(R.string.no_title);
-            binding.subtitleEditText.setText(R.string.no_subtitle);
+            //if bundle is null
+            binding.nrpEditText.setText("NRP");
+            binding.nameEditText.setText("Name");
+            binding.birthEditText.setText("Birth");
+            binding.genderEditText.setText("Gender");
+            binding.addressEditText.setText("Address");
         }
 
         binding.btnUpdate.setOnClickListener(v -> {
-            String title = Objects.requireNonNull(binding.titleEditText.getText()).toString();
-            String subtitle = Objects.requireNonNull(binding.subtitleEditText.getText()).toString();
+            String nrp= Objects.requireNonNull(binding.nrpEditText.getText()).toString();
+            String name= Objects.requireNonNull(binding.nameEditText.getText()).toString();
+            String birth= Objects.requireNonNull(binding.birthEditText.getText()).toString();
+            String gender= Objects.requireNonNull(binding.genderEditText.getText()).toString();
+            String address= Objects.requireNonNull(binding.addressEditText.getText()).toString();
+
+
 
             dbHelper = new FeedReaderDbHelper(getContext());
-            dbHelper.updateData(title, subtitle);
+            dbHelper.updateData(
+                    nrp,
+                    name,
+                    birth,
+                    gender,
+                    address
+            );
 
             NavController navController = Navigation.findNavController(view);
             navController.navigateUp();
         });
 
         //disable edit text for title
-        binding.titleEditText.setEnabled(false);
+        binding.nrpEditText.setEnabled(false);
     }
 }

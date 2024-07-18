@@ -57,8 +57,8 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
         }
 
         public void bind(Feed feed) {
-            title.setText(feed.getTitle());
-            subtitle.setText(feed.getSubtitle());
+            title.setText(feed.getName());
+            subtitle.setText(feed.getAddress());
 
         }
     }

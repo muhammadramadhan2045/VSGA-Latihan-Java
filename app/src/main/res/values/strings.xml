@@ -32,4 +32,19 @@
     <string name="update">Ubah</string>
     <string name="no_subtitle">No Subtitle</string>
     <string name="no_title">No Title</string>
+    <string name="student">Mahasiswa</string>
+    <string name="student_desc">Daftar mahasiswa aktif</string>
+    <string name="see_data">Lihat Data</string>
+    <string name="add_data">Input Data</string>
+    <string name="information">Informasi</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="title_login_page">Login</string>
+    <string name="information_desc">Aplikasi ini merupakan aplikasi latihan saja menggunakan Java dalam membuat aplikasi Android dan juga menyelesaikan sertfikasi JMP.</string>
+    <string name="nrp_input_hint">Masukkan NRP</string>
+    <string name="name_hint">Masukkan Nama</string>
+    <string name="address_hint">Masukkan Alamat</string>
+    <string name="gender_hint">Masukkan Jenis Kelamin</string>
+    <string name="birth_hint">Masukkan Tanggal Lahir</string>
 </resources>

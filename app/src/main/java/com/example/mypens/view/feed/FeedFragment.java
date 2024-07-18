@@ -12,14 +12,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 
-import com.example.mypens.R;
 import com.example.mypens.databinding.FragmentFeedBinding;
-import com.example.mypens.db.FeedReaderDbHelper;
+import com.example.mypens.db.feed.FeedReaderDbHelper;
 import com.google.android.material.textfield.TextInputEditText;
-
-import org.w3c.dom.Text;
 
 import java.util.Objects;
 
@@ -47,17 +43,29 @@ public class FeedFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        TextInputEditText titleEditText = binding.titleEditText;
-        TextInputEditText subEditText = binding.subtitleEditText;
+        TextInputEditText nrpEditText = binding.nrpEditText;
+        TextInputEditText nameEditText = binding.nameEditText;
+        TextInputEditText birthEditText = binding.birthEditText;
+        TextInputEditText genderEditText = binding.genderEditText;
+        TextInputEditText addressEditText = binding.addressEditText;
 
         binding.buttonSave.setOnClickListener(v -> {
-            String title = Objects.requireNonNull(titleEditText.getText()).toString();
-            String subtitle = Objects.requireNonNull(subEditText.getText()).toString();
+            String nrp = Objects.requireNonNull(nrpEditText.getText()).toString();
+            String name = Objects.requireNonNull(nameEditText.getText()).toString();
+            String birth = Objects.requireNonNull(birthEditText.getText()).toString();
+            String gender = Objects.requireNonNull(genderEditText.getText()).toString();
+            String address = Objects.requireNonNull(addressEditText.getText()).toString();
 
             //insdert to database try catch
             try {
                 dbHelper = new FeedReaderDbHelper(getContext());
-                dbHelper.insertData(title, subtitle);
+                dbHelper.insertData(
+                        nrp,
+                        name,
+                        birth,
+                        gender,
+                        address
+                );
                 NavController navController = Navigation.findNavController(view);
                 navController.navigateUp();
             } catch (Exception e) {

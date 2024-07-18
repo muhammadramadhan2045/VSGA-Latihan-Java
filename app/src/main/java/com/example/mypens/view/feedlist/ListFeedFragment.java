@@ -16,14 +16,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.example.mypens.R;
 import com.example.mypens.adapter.FeedAdapter;
 import com.example.mypens.databinding.FragmentListFeedBinding;
-import com.example.mypens.db.FeedReaderContract;
-import com.example.mypens.db.FeedReaderDbHelper;
+import com.example.mypens.db.feed.FeedReaderContract;
+import com.example.mypens.db.feed.FeedReaderDbHelper;
 import com.example.mypens.model.Feed;
 
 import java.util.ArrayList;
@@ -71,10 +70,21 @@ public class ListFeedFragment extends Fragment {
         feedAdapter = new FeedAdapter(feedList);
         binding.rvFeed.setAdapter(feedAdapter);
 
+
+        //set when rv empty show visibilty to lotti
+        if (feedList.isEmpty()) {
+            binding.viewEmpty.animationView.setVisibility(View.VISIBLE);
+        } else {
+            binding.viewEmpty.animationView.setVisibility(View.GONE);
+        }
+
         feedAdapter.setOnItemClickCallback(feed -> {
             Bundle bundle = new Bundle();
-            bundle.putString("title", feed.getTitle());
-            bundle.putString("subtitle", feed.getSubtitle());
+            bundle.putString("name", feed.getName());
+            bundle.putString("address", feed.getAddress());
+            bundle.putString("gender", feed.getGender());
+            bundle.putString("birth", feed.getDate());
+            bundle.putString("nrp", feed.getNrp());
             NavController navController = NavHostFragment.findNavController(ListFeedFragment.this);
             navController.navigate(R.id.action_listFeedFragment_to_detailFeedFragment, bundle);
         });
@@ -95,8 +105,10 @@ public class ListFeedFragment extends Fragment {
 
                 //delete from database
                 try {
-                    dbHelper.deleteData(feed.getTitle());
+                    dbHelper.deleteData(feed.getName());
                     feedList.remove(position);
+                    feedAdapter.notifyItemRemoved(position);
+                    feedAdapter.notifyItemRangeChanged(position, feedList.size());
                 } catch (Exception e) {
                     Toast.makeText(getContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -115,8 +127,11 @@ public class ListFeedFragment extends Fragment {
 
         String[] projection = {
                 FeedReaderContract.FeedEntry._ID,
-                FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE,
-                FeedReaderContract.FeedEntry.COLUMN_NAME_SUBTITLE
+                FeedReaderContract.FeedEntry.COLUMN_NAME_NRP,
+                FeedReaderContract.FeedEntry.COLUMN_NAME_NAME,
+                FeedReaderContract.FeedEntry.COLUMN_NAME_DATE,
+                FeedReaderContract.FeedEntry.COLUMN_NAME_GENDER,
+                FeedReaderContract.FeedEntry.COLUMN_NAME_ADDRESS
         };
 
         Cursor cursor = db.query(
@@ -131,9 +146,15 @@ public class ListFeedFragment extends Fragment {
 
         while (cursor.moveToNext()) {
             long itemId = cursor.getLong(cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry._ID));
-            String title = cursor.getString(cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE));
-            String subtitle = cursor.getString(cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_NAME_SUBTITLE));
-            feedList.add(new Feed((int) itemId, title, subtitle));
+            String name = cursor.getString(cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_NAME_NAME));
+            String nrp = cursor.getString(cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_NAME_NRP));
+            String date = cursor.getString(cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_NAME_DATE));
+            String gender = cursor.getString(cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_NAME_GENDER));
+            String address = cursor.getString(cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_NAME_ADDRESS));
+
+
+
+            feedList.add(new Feed((int) itemId, nrp,name, date, gender, address));
         }
         cursor.close();
     }
